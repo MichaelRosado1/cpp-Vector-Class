@@ -104,6 +104,16 @@ public:
         capacity = 1;
         current = 0;
     }
+    //replaces the value at the index containing num with the replacement value
+    void replaceVal(int num, int replacementVal) {
+        for (int i = 0; i < current; i++) {
+            if (array[i] == num) {
+                array[i] = replacementVal;
+                return;
+            }
+        }
+        std::cout<<"value not found in array"<<std::endl;
+    }
 };
 
 
@@ -123,6 +133,8 @@ int main() {
      vect should look like:
         [3,20,1,4,50,23]
     */
+    vect.replaceVal(4, 400);
+    
     vect.sort();
     vect.print();
     
