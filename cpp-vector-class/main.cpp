@@ -6,6 +6,7 @@
 //
 
 #include <iostream>
+
 class MyVector {
     //pointer to the address where the array data will be stored
     int* array;
@@ -39,7 +40,7 @@ public:
             delete[] array;
             //increases the size of the array to fit new data
             capacity *= 2;
-            //sets the array equal to the
+            //sets the array equal to the new array of size capacity * 2
             array = temp;
         }
         //if the current position isn't equal to the size of the array, set the new data to the position of the current index
@@ -96,6 +97,13 @@ public:
         }
         
     }
+    //deletes all the data in the array
+    void clear() {
+        //sets array equal to same array created in the constructor
+        delete[] array;
+        capacity = 1;
+        current = 0;
+    }
 };
 
 
@@ -117,7 +125,8 @@ int main() {
     */
     vect.sort();
     vect.print();
-    /*output should look like:
+    
+    /*output looks like:
      1 3 4 20 23 50
      */
 }
