@@ -7,10 +7,11 @@
 
 #include <iostream>
 class MyVector {
+    //pointer to the address where the array data will be stored
     int* array;
-    
+    //size of the array
     int capacity;
-    
+    //index where the next inputted value will be stored
     int current;
     
 public:
@@ -59,6 +60,42 @@ public:
             std::cout<<array[i]<<" ";
         }
     }
+    //sorts the array in acending order
+    void sort() {
+        if (size() == 1) {
+            //an array of length 1 is already sorted!
+            return;
+        }
+        /*
+         Loops from the beginning of the array to the end of the array using the
+         size() method created previously
+         
+            size() returns the current index of the array, which would also be equal to the current size of the vector.
+         */
+        int temp;
+        //want to compare values to i
+        for (int i = 0; i < size(); i++) {
+            //loops through array again to compare all numbers to i
+            for (int j =0; j < size(); j++) {
+                // if any value in the array is smaller than array[i], swap them
+                
+                /*
+                 it is also very interesting to see how switching the > sign to
+                 < changes the way the data is sorted.
+                 comparing > causes it to be sorted in acending order, while comparing < causes it to be sorted in decending order.
+                 
+                 */
+                if (array[j] > array[i]) {
+                    //keeps track of array[i] since it will change in value
+                    temp = array[i];
+                    array[i] = array[j];
+                    //sets array[j] equal to original value of array[i]
+                    array[j] = temp;
+                }
+            }
+        }
+        
+    }
 };
 
 
@@ -72,12 +109,15 @@ int main() {
     vect.push(20);
     vect.push(1);
     vect.push(4);
+    vect.push(50);
+    vect.push(23);
     /*
      vect should look like:
-        [3,20,1,4]
+        [3,20,1,4,50,23]
     */
+    vect.sort();
     vect.print();
     /*output should look like:
-        3 20 1 4
+     1 3 4 20 23 50
      */
 }
